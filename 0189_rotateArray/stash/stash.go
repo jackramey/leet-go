@@ -17,8 +17,8 @@ func Rotate(nums []int, k int) {
 	}
 
 	stashRotateHelper(nums, k, 0)
-	if k != 1 && len(nums)/k > 0 {
-		for i := 1; i < len(nums)%k; i++ {
+	if k != 1 && len(nums)/k > 0 && len(nums)%k == 0 {
+		for i := 1; i < k; i++ {
 			stashRotateHelper(nums, k, i)
 		}
 	}
