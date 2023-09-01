@@ -1,12 +1,14 @@
 package removeDuplicatesSorted
 
 func removeDuplicates(nums []int) int {
-	lastSeen := -101
-	idx := 0
-	for i := 0; i < len(nums); i++ {
-		if nums[i] != lastSeen {
+	if len(nums) < 2 {
+		return len(nums)
+	}
+
+	idx := 1
+	for i := 1; i < len(nums); i++ {
+		if nums[i] != nums[i-1] {
 			nums[idx] = nums[i]
-			lastSeen = nums[i]
 			idx++
 		}
 	}
