@@ -1,0 +1,11 @@
+#!/bin/bash
+
+INPUT=$1
+PROBLEM_NUMBER=$(printf "%04d" "${INPUT%_*}") # extract the problem number and pad it to 4 digits
+PROBLEM_DESC=${INPUT#*_} # extract the problem description
+PROBLEM_NAME=${PROBLEM_NUMBER}_${PROBLEM_DESC} # rebuild the problem name
+GO_FILE=${PROBLEM_NAME}/${PROBLEM_NAME}.go # construct .go filename
+
+mkdir -p "${PROBLEM_NAME}" # make the directory
+touch ${GO_FILE} # create the .go file
+echo "package ${PROBLEM_DESC}" > ${GO_FILE} # init the file with a package name

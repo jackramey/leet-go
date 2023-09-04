@@ -134,7 +134,8 @@ func Test_all(t *testing.T) {
 	for _, alg := range algorithms {
 		for _, tt := range tests {
 			t.Run(alg.name+": "+tt.name, func(t *testing.T) {
-				nums := append([]int(nil), tt.args.nums...)
+				nums := make([]int, len(tt.args.nums))
+				copy(nums, tt.args.nums)
 				alg.alg(nums, tt.args.k)
 				for _, ch := range tt.checks {
 					ch(t, nums)
