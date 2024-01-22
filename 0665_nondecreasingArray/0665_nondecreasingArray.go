@@ -22,19 +22,3 @@ func checkPossibility(nums []int) bool {
 
 	return true
 }
-
-func checkPossibility_old(nums []int) bool {
-	j := -1
-
-	for i := 1; i < len(nums); i++ {
-		l, r := nums[i-1], nums[i]
-		if r <= l {
-			if j >= 0 {
-				return false
-			}
-			j = i - 1
-		}
-	}
-
-	return true
-}
